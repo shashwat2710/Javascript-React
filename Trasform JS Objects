@@ -1,0 +1,36 @@
+// input = {
+//   milkshake: ['banana', 'milk', 'sugar'],
+//   tea: ['water', 'milk', 'sugar','greenTea'],
+//   coffee: ['water', 'milk', 'coffeePowder', 'sugar'],
+// }
+// Output = {
+//   	banana: ['milkshake'],
+//     milk: ['milkshake', 'tea', 'coffee'],
+//     sugar: ['milkshake', 'tea', 'coffee'],
+//     greenTea: ['tea'],
+//     water: ['tea', 'coffee'],
+//     coffeePowder: ['coffee'],
+// }
+  
+const input = {
+  milkshake: ['banana', 'milk', 'sugar'],
+  tea: ['water', 'milk', 'sugar','greenTea'],
+  coffee: ['water', 'milk', 'coffeePowder', 'sugar'],
+};
+  
+const main = (data) => {
+ const output = {}
+ for(x in input){
+    input[x].forEach(function(a){
+        let arr=[]
+        if(output[a] !== undefined)
+            output[a].forEach(o=>arr.push(o))
+        arr.push(x)
+        output[a] = [...arr]
+    }) 
+ }
+    
+ return output
+} 
+
+console.log('Output:  ', main(input))
